@@ -1,0 +1,16 @@
+{
+  "projects": {
+    "default": "authfirebase-8a55d",
+    "detailForm": "frout1-73461",
+    "detail": "authfirebase-8a55d"
+  },
+  "targets": {
+    "authfirebase-8a55d": {
+      "hosting": {
+        "authfire2": [
+          "authfirebase-8a55d"
+        ]
+      }
+    }
+  }
+}

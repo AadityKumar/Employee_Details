@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="row justify-content-center p-4">
+
+      
+
+        <div class="col-md-6">
+            <form (ngSubmit)="register()">
+            <h2>REgister Page</h2>
+            <div class="form-group p-2">
+                <input type="email" class="form-control" name="email" [(ngModel)]="email" placeholder="Enter Email" required>
+            </div>
+            <div class="form-group p-2">
+                <input type="password" class="form-control" name="password" [(ngModel)]="password" placeholder="Enter Password" required>
+            </div>
+            <div class="form-group p-2">
+                <button type="submit" class="btn btn-primary">REgister</button>
+                <div class="register"><a href="#" routerLink="/login">Go Back To Login</a></div>
+            </div>
+        </form>
+        <div class="form-group">
+            <p *ngIf="errorMessage.length >0" class="text-danger">
+                {{errorMessage}}</p>
+            <p *ngIf="error.message.length >0" class="text-danger">
+                 {{error.message}}</p>
+                 <h5 style="color: green;"  *ngIf="message.length > 0" >
+               <b> {{message}}</b></h5> 
+        </div>
+        </div>
+      
+    </div>
+</div>
+

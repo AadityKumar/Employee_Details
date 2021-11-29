@@ -1,0 +1,84 @@
+<div>
+<nav class="navbar navbar-dark" style="background-color:steelblue;">
+   <h2> CRUD Operation </h2>
+
+    <div  style="color: black; padding: 2;" *ngIf="authservice.currentUser">
+        
+        <h4><b>User Email: </b>{{authservice.currentUserName}}</h4>
+        <button class="btn-danger" (click)="authservice.signout()">Logout</button>
+   
+    </div>
+  </nav>
+  <div class="container">
+     <div class="row justify-content-center p-2">
+       <h1>Angular 11 with Firebase CRUD Web-App</h1>
+     </div>
+   
+     <div class="form-group" >
+       <input type="text" class="form-control" [(ngModel)]="employeeName" placeholder="Entre Name">
+     </div>
+     <div class="form-group">
+      <input type="number" class="form-control" [(ngModel)]="employeeAge" placeholder="Entre Age">
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" [(ngModel)]="employeeAddress" placeholder="Entre Address">
+    </div>
+    <div class="form-group">
+      <button class="btn btn-primary" (click)="CreateRecord()" [disabled]="!employeeName || !employeeAge || !employeeAddress">Create Employee</button>
+    </div>
+   
+    
+  
+    <div class="row p-2">
+      <div class="col-md-12 p-2 justify-content-center">
+        <h4>All Employee Data</h4>
+      </div>
+      <div class="col-md-6" *ngFor="let item of employee">
+          <div class="card" *ngIf="!item.isedit; else elseblock">
+            <div class="card-body">
+              <div class="card-title">
+                Name: {{item.name}}
+              </div>
+              <div class="card-subtitle">
+                Age: {{item.age}}
+              </div>
+              <div class="card-text">
+                Address: {{item.address}}
+              </div>
+              <span>
+                <a  (click)="EditRecord(item)" class="btn btn-primary btn-xs">Edit Employee</a>
+                <a  (click)="DeleteRecord(item.id)" class="btn btn-danger btn-xs">Delete Employee</a>
+              </span>
+              </div>
+          </div>
+  
+          <ng-template #elseblock>
+            <div class="card">
+              <div class="card-body">
+                <div class="card-title">
+                  Edit Employee
+                </div>
+                <div class="row">
+                  <div class="form-group">
+                    <div class="col-md-12">
+                      <input type="text" [(ngModel)]="item.editname" class="form-control">
+                    </div>
+                    <div class="col-md-12">
+                      <input type="number" [(ngModel)]="item.editage" class="form-control">
+                    </div>
+                    <div class="col-md-12">
+                      <input type="text" [(ngModel)]="item.editaddress" class="form-control">
+                    </div>
+                  </div>
+                </div>
+                <a  class="btn btn-danger btn-xs" (click)="item.isedit = false">Cancel</a>
+                <a  class="btn btn-primary btn-xs"  (click)="UpdateRecord(item)">Update Employee</a>
+                </div>
+            </div>
+          </ng-template>
+      </div>
+    </div>
+  
+  </div>
+</div>
+  
